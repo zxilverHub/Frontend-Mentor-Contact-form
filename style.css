@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    --primary-green-light: #dff1e7;
+    --primary-green-medium: #0c7d69;
+    --primary-red: #d94545;
+
+    --white: #ffffff;
+    --grey-medium: #87a3a6;
+    --grey-darker: #2b4246;
+
+    --label: 1rem;
+
+    --weight-sm: 400;
+    --weight-lg: 700;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: var(--weight-sm);
+    font-style: normal;
+}
+
+body {
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+    background-color: var(--primary-green-light);
+}
+
+main {
+    width: 100%;
+    padding: 8% 20%;
+}
+
+.form-container {
+    width: 100%;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .error-msg {
+        display: none;
+        color: var(--primary-red);
+    }
+
+    .true ~ .error-msg {
+        display: block;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        font-weight: var(--weight-lg);
+        color: var(--grey-darker);
+        text-transform: capitalize;
+    }
+
+    label:not(.line) {
+        width: 100%;
+        color: var(--grey-darker);
+        font-size: var(--label);
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+    p {
+        color: var(--grey-darker);
+        font-size: var(--label);
+    }
+
+    button {
+        width: 100%;
+        font-weight: var(--weight-lg);
+        padding: 1rem;
+        font-size: var(--label);
+        border: none;
+        outline: none;
+        background-color: var(--primary-green-medium);
+        color: var(--white);
+        border-radius: 6px;
+    }
+
+    .name-field {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .query {
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+            padding: .8rem 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--grey-medium);
+        }
+
+        input[type="radio"]:checked {
+            color: #87a3a6;
+        }
+    }
+
+    .agree {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        position: relative;
+        margin-bottom: 1rem;
+
+        input {
+            width: 1rem;
+            aspect-ratio: 1;
+        }
+    }
+    
+    textarea {
+        resize: none;
+        border-radius: 8px;
+        border: 1px solid var(--grey-medium);
+        padding: 1rem;
+    }
+
+    textarea:focus {
+        outline: 1px solid var(--grey-medium);
+    }
+}
+
+input[type="text"],
+input[type="email"] {
+    font-size: var(--label);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--grey-medium);
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: 1px solid var(--grey-darker);
+}
+
+.qtype {
+    margin-top: .5rem;
+}
+
+.active-query {
+    background-color: var(--primary-green-light);
+    border-color: var(--primary-green-medium);
+}
+
+.bl {
+    /* display: block !important; */
+    position: absolute;
+    bottom: -1.5rem;
+}
+
+.success {
+    position: fixed;
+    z-index: 100;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all .3 ease;
+
+    background-color: var(--grey-darker);
+    border-radius: 12px;
+    padding: 2rem;
+
+    .title {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+
+        color: var(--white);
+        font-size: .8rem;
+        margin-bottom: .7rem;
+    }
+
+    .sent-message {
+        color: var(--primary-green-light);
+    }
+}
+
+.success.active {
+    top: 3%;
+}
+
+@media (max-width: 640px) {
+    main {
+        padding: 5rem 1rem;
+    }
+    .name-field {
+        flex-direction: column;
+    }
+}
